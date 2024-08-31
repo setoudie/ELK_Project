@@ -1,20 +1,48 @@
-import pandas as pd
 import json
 
-# Define the path to the CSV file
-csv_file_path = 'EmploisSenegal_IT_jobs.csv'
+from django.db.models.signals import pre_init
+from elasticsearch import Elasticsearch
 
-# Load the CSV file
-df = pd.read_csv(csv_file_path)
+# Connection a elasticsearch
+client = Elasticsearch(
+    'https://localhost:9200',
+    basic_auth=('elastics', 'elastic'),
+    verify_certs=False
+)
 
-# Convert the DataFrame to JSON
-json_data = df.to_json(orient='records')
+# Chemin vers le fichier JSON
+json_data_path = 'EmploisSenegal_IT_jobs.json'
 
-# Define the path for the JSON output file
-json_file_path = 'EmploisSenegal_IT_jobs.json'
+# Liste pour stocker les documents JSON
+json_list = []
 
-# Save the JSON data to the file
-with open(json_file_path, 'w') as json_file:
-    json_file.write(json_data)
+# Lire le fichier et ajouter chaque ligne à la liste
+with open(json_data_path, 'r') as json_file:
+    for line in json_file:
+        # Convertir chaque ligne en dictionnaire et ajouter à la liste
+        json_list.append(json.loads(line))
 
-print(f'JSON data has been saved to {json_file_path}')
+# Afficher la liste des documents JSON
+jobs_data = json_list[0]
+
+# Initialisation des variables
+i = 0
+doc = dict()
+
+for job in jobs_data:
+    i+=1
+    # print(i)
+    # print()
+    # print(job)
+
+    # Creat a new dict (doc)
+    doc['Title'] = job['Title']
+    doc['Description'] = job['Description']
+    doc['ContractType'] = job['ContractType']
+    doc['Skills'] = job['Skills']
+
+    # print(doc)
+    resp = client.index(index="job-it-senegal", id=i, document=doc)
+    print(resp['result'])
+    doc=dict()
+    # break
