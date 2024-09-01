@@ -11,7 +11,6 @@ Ce projet consiste à récupérer, traiter, et analyser des offres d'emploi IT d
 - **Django**
 - **Elasticsearch** (Local ou Cloud)
 - **Kibana** (pour la visualisation)
-- **API Microsoft LinkedIn**
 - **Bibliothèques Python :**
   - `elasticsearch`
   - `pandas`
