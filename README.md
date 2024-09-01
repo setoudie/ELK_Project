@@ -131,9 +131,10 @@ found_data --> [{'Title': 'AZURE Solutions Architect (M/F)', 'Description': ' We
 
 3. **Visualiser les données dans Kibana :**
 
-   Accédez à Kibana via votre navigateur et configurez des visualisations pour les données indexées.
+   Et avec les donnes mis dans kibana on obtient ce visuel :
+![img_2.png](img_2.png)
 
 ## Conclusion
 
-Ce projet permet de créer un moteur de recherche spécialisé pour les offres d'emploi IT en utilisant l'API de Microsoft LinkedIn, Django pour la gestion des données, Elasticsearch pour l'indexation, et Kibana pour la visualisation.
-```
+Ce projet permet de créer un moteur de recherche spécialisé pour les offres d'emploi IT , Django pour la creation d'une app de recherche de données, Elasticsearch pour l'indexation, et Kibana pour la visualisation.\
+apres mou diekh :) 
