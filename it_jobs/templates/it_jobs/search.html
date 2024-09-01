@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recherche par Mots-clés</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Résultats de la Recherche</h1>
+
+        <form method="GET" action="{% url 'search_view' %}" class="form-inline my-4 justify-content-center">
+            <input type="text" name="q" class="form-control mr-2" placeholder="Entrez un mot-clé..." value="{{ request.GET.q }}">
+            <button type="submit" class="btn btn-primary">Rechercher</button>
+        </form>
+
+        {% if found_datas %}
+            <div class="list-group">
+                {% for job in found_datas %}
+                    <div class="list-group-item">
+                        <h5>{{ job.Title }}</h5>
+                        <strong>Description :</strong><p>{{ job.Description|truncatewords:30 }}</p>
+                        <strong>Competences :</strong> {{ job.Skills }}<br>
+                        <strong>Type de contrat :</strong> {{ job.ContractType }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="text-center">Aucun résultat trouvé pour <strong>"{{ request.GET.q }}"</strong></p>
+        {% endif %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

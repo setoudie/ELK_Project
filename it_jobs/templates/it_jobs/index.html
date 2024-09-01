@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenue sur IT Jobs SN</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+        }
+        .welcome-container {
+            text-align: center;
+            background: #fff;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 3rem;
+            color: #343a40;
+        }
+        p {
+            font-size: 1.25rem;
+            color: #6c757d;
+        }
+        .btn-search {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-container">
+        <h1>Bienvenue sur IT Jobs SN</h1>
+        <p>Découvrez les meilleures offres d'emploi IT au Sénégal.</p>
+        <a href="{% url 'search_view' %}" class="btn btn-primary btn-search">Rechercher des Offres</a><br><br>
+        <p><strong>Auteur : </strong>Seny Toutou DIEDHIOU</p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
