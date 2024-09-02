@@ -33,3 +33,7 @@ def search_view(request):
         # print(len(found_data), found_data)
 
     return render(request, 'it_jobs/search.html', {'found_datas': found_data})
+
+# Creation de la view pour afficher le dashboard
+def dashboard(request):
+    return render(request, 'it_jobs/dashboard.html')
