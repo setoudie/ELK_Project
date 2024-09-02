@@ -78,13 +78,13 @@ resp = client.index(index="job-it-senegal", id=i, document=doc)
    ```
 Cette app contient deux views: 
 * `index` c'est la page d'acceuil : http://localhost:8000/it-jobs-sn/
-![img.png](img.png)
+![img_4.png](img_4.png)
 ```python
 def index(request):
     return render(request, 'it_jobs/index.html')
 ```
 * `search_views` c'est la page pour chercher un poste par mot cle : http://localhost:8000/it-jobs-sn/search/
-![img_1.png](img_1.png)
+![img_5.png](img_5.png)
 ```python
 def search_view(request):
     client = Elasticsearch(
@@ -131,7 +131,7 @@ found_data --> [{'Title': 'AZURE Solutions Architect (M/F)', 'Description': ' We
 3. **Visualiser les données dans Kibana :**
 
    Et avec les donnes mis dans kibana on obtient ce visuel :
-![img_2.png](img_2.png)
+![img_3.png](img_3.png)
 
 ## Conclusion
 

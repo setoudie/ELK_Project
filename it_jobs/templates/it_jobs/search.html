@@ -12,7 +12,10 @@
 
         <form method="GET" action="{% url 'search_view' %}" class="form-inline my-4 justify-content-center">
             <input type="text" name="keywords" class="form-control mr-2" placeholder="Entrez un mot-clé..." value="{{ request.GET.q }}">
-            <button type="submit" class="btn btn-primary">Rechercher</button>
+            <div style="gap: 10px">
+                <button type="submit" class="btn btn-primary">Rechercher</button>
+                <a href="{% url 'index' %}" class="btn btn-primary btn-search">Home</a>
+            </div>
         </form>
 
         {% if found_datas %}
