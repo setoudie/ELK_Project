@@ -33,4 +33,3 @@ def search_view(request):
         # print(len(found_data), found_data)
 
     return render(request, 'it_jobs/search.html', {'found_datas': found_data})
-
