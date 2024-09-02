@@ -11,7 +11,7 @@
         <h1 class="text-center">Résultats de la Recherche</h1>
 
         <form method="GET" action="{% url 'search_view' %}" class="form-inline my-4 justify-content-center">
-            <input type="text" name="q" class="form-control mr-2" placeholder="Entrez un mot-clé..." value="{{ request.GET.q }}">
+            <input type="text" name="keywords" class="form-control mr-2" placeholder="Entrez un mot-clé..." value="{{ request.GET.q }}">
             <button type="submit" class="btn btn-primary">Rechercher</button>
         </form>
 

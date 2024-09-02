@@ -1,3 +1,5 @@
+from dataclasses import field
+
 from django.shortcuts import render
 
 # Create your views here.
@@ -5,23 +7,36 @@ from django.shortcuts import render
 from django.shortcuts import render
 from elasticsearch import Elasticsearch
 
+# view de la page de Home
 def index(request):
     return render(request, 'it_jobs/index.html')
 
+
+# view pour chercher un document par keyword
 def search_view(request):
+    # Configuration pour la connection a elastic
     client = Elasticsearch(
         'https://localhost:9200',
         basic_auth=('elastics', 'elastic'),
         verify_certs=False
     )
-    query = request.GET.get('q')
+    keyword = request.GET.get('keywords')
 
     found_data = []
-    if query:
+    if keyword:
+        # response = client.search(index='job-it-senegal', body={
+        #     "query": {
+        #         "match": {
+        #             "Description": query
+        #         }
+        #     }
+        # })
+
         response = client.search(index='job-it-senegal', body={
-            "query": {
-                "match": {
-                    "Description": query
+            "query":{
+                "multi_match": {
+                    "query": f"{keyword}",
+                    "fields":["Title", "Description", "Skills", "ContractType"]
                 }
             }
         })
