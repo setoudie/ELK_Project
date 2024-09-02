@@ -1,6 +1,6 @@
 """
-    Dans ce code on un fichier csv en json  puis onrecupere chaque ligne comme comme un dictionnaire.
-    Ce dictionnaire est indexe et stocke dans elasticsearch ou on fera des visualisation avec kibana.
+    Dans ce code, on a un fichier csv en json puis recuperation chaque ligne comme un dictionnaire.
+    Ce dictionnaire est indexé et stocke dans elasticsearch ou on fera de la visualisation avec kibana.
 """
 from django.db.models.signals import pre_init
 import json
@@ -46,7 +46,7 @@ for job in jobs_data:
     doc['Skills'] = job['Skills']
 
     # print(doc)
-    #indexation des donnnes
+    #indexation des donnes
     resp = client.index(index="job-it-senegal", id=i, document=doc)
     print(resp['result'])
     doc=dict()
