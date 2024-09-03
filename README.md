@@ -23,7 +23,6 @@ Ce projet consiste à récupérer, traiter, et analyser des offres d'emploi IT d
 
    ```bash
    git clone https://github.com/setoudie/ELK_Project.git
-
    cd ELK_Project
    ```
 
@@ -54,7 +53,12 @@ client = Elasticsearch(
 
 resp = client.index(index="job-it-senegal", id=i, document=doc)
 ```
-
+On peut aussi envoyer les donnes vers elasticsearch en utilisant `logstash`
+1. on configure d'abord le fichier : `logstash.conf`
+2. on lance `logstash` et on envoi les donnes dans kibana avec la commande suivante:
+   ```bash  
+    sudo /usr/share/logstash/bin/logstash -f /etc/logstash/logstash.conf 
+   ```
 ## Structure du Projet
 
 ```
@@ -74,7 +78,6 @@ resp = client.index(index="job-it-senegal", id=i, document=doc)
 
    ```bash
    python manage.py startapp it_jobs
-
    ```
 Cette app contient deux views: 
 * `index` c'est la page d'acceuil : http://localhost:8000/it-jobs-sn/
